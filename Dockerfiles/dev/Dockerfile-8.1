@@ -1,4 +1,5 @@
 FROM dumptec/php-fpm:8.1-base
+MAINTAINER "dump" <ola@dump.tec.br>
 
 ### Add xdebug config
 COPY ./data/php-ini.d/php-8.1-xdebug.ini /usr/local/etc/php/conf.d/zz-php-8.1-xdebug.ini
