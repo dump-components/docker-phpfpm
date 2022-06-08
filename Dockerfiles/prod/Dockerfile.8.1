@@ -1,0 +1,13 @@
+FROM dumptec/php-fpm:8.1-base
+MAINTAINER "dump" <ola@dump.tec.br>
+
+## Install extension dependencies
+RUN apt install -y --allow-downgrades procps libcurl4-openssl-dev \
+    libssl1.1=1.1.1n-0+deb11u1 libxml2=2.9.10+dfsg-6.7+deb11u1 \
+    libpq-dev libxml2-dev libssl-dev libzip-dev zlib1g=1:1.2.11.dfsg-2 libsodium-dev libpng-dev
+
+## Install required dependencies
+RUN docker-php-ext-install bcmath pdo_pgsql simplexml zip gd sodium \
+    && docker-php-ext-enable gd sodium bcmath pdo_pgsql simplexml zip
+
+WORKDIR /app
