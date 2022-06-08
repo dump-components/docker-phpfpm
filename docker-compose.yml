@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+
+    phpfpm:
+        image: dumptec/php-fpm:8.1-dev
+        container_name: phpfpm
+        working_dir: /app
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        user: "dump"
+        restart: on-failure
+        logging:
+            options:
+                max-size: "50m"
+                max-file: "3"
+        volumes:
+            - ./app:/app
+            - ./docker/phpfpm-php-custom.ini:/usr/local/etc/php/conf.d/99-php-custom.ini
+            - ./docker/phpfpm-php-xdebug.ini:/usr/local/etc/php/conf.d/99-xdebug.ini
+            - ./docker/phpfpm-php-fpm-custom.conf:/usr/lo"cal/etc/php-fpm.d/zz-phpfpm-custom.conf:ro
