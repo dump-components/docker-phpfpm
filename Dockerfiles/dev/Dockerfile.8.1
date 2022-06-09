@@ -9,7 +9,7 @@ RUN apt install -y --allow-downgrades procps libcurl4-openssl-dev \
     libpq-dev libxml2-dev libssl-dev libzip-dev zlib1g=1:1.2.11.dfsg-2 libsodium-dev libpng-dev
 
 ## Install required dependencies
-RUN docker-php-ext-install bcmath pdo_pgsql simplexml zip gd sodium \
+RUN docker-php-ext-install bcmath pgsql pdo_pgsql simplexml zip gd sodium \
     && docker-php-ext-enable gd sodium bcmath pgsql pdo_pgsql simplexml zip
 
 ## local dependencies
