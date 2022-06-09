@@ -3,7 +3,7 @@
 ## User
 
 > O campo user define qual usuário irá ser usado para rodar os processos
-> dentro do container. O usuário dump já existe dentro do container
+> dentro do container. O usuário dump já existe dentro do container com o uid 1000
 
 ```shell
 user: "dump"
@@ -12,8 +12,11 @@ user: "dump"
 ## Build images
 
 ```shell
-docker build -t dumptec/php-fpm:8.1-base -f Dockerfiles/base/Dockerfile-8.1 ./Dockerfiles/base/
-docker build -t dumptec/php-fpm:8.1-dev  -f Dockerfiles/dev/Dockerfile-8.1 ./Dockerfiles/dev/
+## base
+docker build -t dumptec/php-fpm:8.1-base -f Dockerfiles/base/Dockerfile.8.1 ./Dockerfiles/base/
+
+## development
+docker build -t dumptec/php-fpm:8.1-dev  -f Dockerfiles/dev/Dockerfile.8.1 ./Dockerfiles/dev/
 ```
 
 ## Arquivos de configuração
