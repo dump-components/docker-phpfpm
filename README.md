@@ -17,6 +17,9 @@ docker build -t dumptec/php-fpm:8.1-base -f Dockerfiles/base/Dockerfile.8.1 ./Do
 
 ## development
 docker build -t dumptec/php-fpm:8.1-dev  -f Dockerfiles/dev/Dockerfile.8.1 ./Dockerfiles/dev/
+
+## production
+docker build -t dumptec/php-fpm:8.1  -f Dockerfiles/prod/Dockerfile.8.1 ./Dockerfiles/prod/
 ```
 
 ## Arquivos de configuração
