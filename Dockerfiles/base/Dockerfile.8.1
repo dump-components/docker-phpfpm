@@ -1,16 +1,13 @@
 FROM php:8.1-fpm
 
 ## Create dump user
-RUN useradd -u 1000 -ms /bin/bash dump
-
+RUN useradd -u 1000 -ms /bin/bash dump \
 ## Change Timezone
-RUN ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
-
-## Set default debian repo
-RUN echo "deb http://deb.debian.org/debian bullseye main" > /etc/apt/sources.list
-
+    && ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime \
+## Set default debian repo 
+    && echo "deb http://deb.debian.org/debian bullseye main" > /etc/apt/sources.list \
 ## Update/upgrade apt repo
-RUN apt update -y && apt upgrade -y
+    && apt update -y && apt upgrade -y
 
 ### Copy files
 COPY ./data/php-ini.d/php-8.1.ini /usr/local/etc/php/conf.d/xx-default-php-custom.ini
