@@ -28,3 +28,9 @@ docker build -t dumptec/php-fpm:8.1  -f Dockerfiles/prod/Dockerfile.8.1 ./Docker
 
 * /usr/local/etc/php/conf.d/
 * /usr/local/etc/php-fpm.d/
+
+## Comando útil para deixar o container rodando
+
+```shell
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+```
