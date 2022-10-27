@@ -4,8 +4,7 @@ FROM dumptec/php-fpm:8.1-base
 COPY ./data/php-ini.d/php-8.1-xdebug.ini /usr/local/etc/php/conf.d/default-php-8.1-xdebug.ini
 
 
-RUN apt-get install -y procps whois wget \
-libpng-dev
+RUN apt-get install -y procps whois wget libpng-dev
 
 ##openssh-server
 ##  zlib1g-dev
