@@ -10,8 +10,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php -r "unlink('composer-setup.php');" && \
     mv composer.phar /usr/local/bin/composer &&  \
 ## Install extension dependencies
-apt install -y expect libcurl4 libcurl4-openssl-dev procps libssl1.1 libxml2 libpq-dev \ 
-    libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev libpng-dev zlib1g-dev && \
+apt install -y libcurl4 libcurl4-openssl-dev procps libssl1.1 libxml2 libpq-dev \ 
+    libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev libpng-dev zlib1g-dev openssh-server whois expect && \
 ## Install required dependencies
 docker-php-ext-install sockets bcmath pgsql pdo_pgsql simplexml zip gd sodium && \
 docker-php-ext-enable gd sodium bcmath pgsql pdo_pgsql simplexml zip && \
