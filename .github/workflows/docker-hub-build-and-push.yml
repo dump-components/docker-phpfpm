@@ -13,7 +13,10 @@ on:
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
+    runs-on: alpine-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -34,7 +37,7 @@ jobs:
           images: dumptec/docker-phpfpm
       
       - name: Build and push Docker image | BASE
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v3
         with:
           context: ./Dockerfiles/base/${{ env.RELEASE_VERSION }}/
           push: true
@@ -42,7 +45,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push Docker image | DEV
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v3
         with:
           context: ./Dockerfiles/dev/${{ env.RELEASE_VERSION }}/
           push: true
@@ -50,7 +53,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push Docker image | PROD
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v3
         with:
           context: ./Dockerfiles/prod/${{ env.RELEASE_VERSION }}/
           push: true
