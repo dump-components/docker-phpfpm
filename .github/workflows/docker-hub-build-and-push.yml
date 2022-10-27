@@ -32,7 +32,7 @@ jobs:
       - name: Build and push Docker image | BASE
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./Dockerfiles/base/0.0.1/
+          context: ./Dockerfiles/base/${{ steps.meta.outputs.tags }}/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -40,7 +40,7 @@ jobs:
       - name: Build and push Docker image | DEV
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./Dockerfiles/dev/0.0.1/
+          context: ./Dockerfiles/dev/${{ steps.meta.outputs.tags }}/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -48,7 +48,7 @@ jobs:
       - name: Build and push Docker image | PROD
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./Dockerfiles/prod/0.0.1/
+          context: ./Dockerfiles/prod/${{ steps.meta.outputs.tags }}/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
