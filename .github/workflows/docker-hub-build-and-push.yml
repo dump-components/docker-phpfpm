@@ -45,7 +45,7 @@ jobs:
       - name: Build and push Docker image | BASE
         uses: docker/build-push-action@v3
         with:
-          context: ./Dockerfiles/base/${{ env.RELEASE_VERSION }}/
+          context: ./Dockerfiles/base/0.0.1/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -53,15 +53,15 @@ jobs:
       - name: Build and push Docker image | DEV
         uses: docker/build-push-action@v3
         with:
-          context: ./Dockerfiles/dev/${{ env.RELEASE_VERSION }}/
+          context: ./Dockerfiles/dev/0.0.1/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Build and push Docker image | PROD
-        uses: docker/build-push-action@v3
-        with:
-          context: ./Dockerfiles/prod/${{ env.RELEASE_VERSION }}/
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      # - name: Build and push Docker image | PROD
+      #   uses: docker/build-push-action@v3
+      #   with:
+      #     context: ./Dockerfiles/prod/${{ env.RELEASE_VERSION }}/
+      #     push: true
+      #     tags: ${{ steps.meta.outputs.tags }}
+      #     labels: ${{ steps.meta.outputs.labels }}
