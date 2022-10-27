@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+        - name: Set env
+          run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -32,7 +34,7 @@ jobs:
       - name: Build and push Docker image | BASE
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./Dockerfiles/base/${{ steps.meta.outputs.tags }}/
+          context: ./Dockerfiles/base/${{ env.RELEASE_VERSION }}/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -40,7 +42,7 @@ jobs:
       - name: Build and push Docker image | DEV
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./Dockerfiles/dev/${{ steps.meta.outputs.tags }}/
+          context: ./Dockerfiles/dev/${{ env.RELEASE_VERSION }}/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -48,7 +50,7 @@ jobs:
       - name: Build and push Docker image | PROD
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./Dockerfiles/prod/${{ steps.meta.outputs.tags }}/
+          context: ./Dockerfiles/prod/${{ env.RELEASE_VERSION }}/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
