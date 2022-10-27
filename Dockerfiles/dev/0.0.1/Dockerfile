@@ -4,11 +4,11 @@ FROM dumptec/php-fpm:8.1-base
 COPY ./data/php-ini.d/php-8.1-xdebug.ini /usr/local/etc/php/conf.d/default-php-8.1-xdebug.ini
 
 
-RUN apt-get install -y procps
+RUN apt-get install -y procps whois wget openssh-server libpng-dev zlib1g-dev
 
 # ## Install extension dependencies
-# RUN apt-get install -y libcurl4 libcurl4-openssl-dev procps libssl1.1 libxml2 libpq-dev wget \ 
-#     libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev libpng-dev zlib1g-dev openssh-server whois expect && \
+# RUN apt-get install -y libcurl4 libcurl4-openssl-dev libssl1.1 libxml2 libpq-dev  \ 
+#     libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev  expect && \
 # ## Install required dependencies
 # docker-php-ext-install sockets bcmath pgsql pdo_pgsql simplexml zip gd sodium && \
 # docker-php-ext-enable gd sodium bcmath pgsql pdo_pgsql simplexml zip && \
