@@ -44,8 +44,8 @@ jobs:
         with:
           context: ./Dockerfiles/base/
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: base-${{ steps.meta.outputs.tags }}
+          labels: base-${{ steps.meta.outputs.labels }}
 
       - name: Build and push Docker image | DEV
         uses: docker/build-push-action@v3
@@ -54,8 +54,8 @@ jobs:
         with:
           context: ./Dockerfiles/dev/
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: dev-${{ steps.meta.outputs.tags }}
+          labels: dev-${{ steps.meta.outputs.labels }}
 
       - name: Build and push Docker image | PROD
         uses: docker/build-push-action@v3
@@ -64,5 +64,5 @@ jobs:
         with:
           context: ./Dockerfiles/prod/
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: prod-${{ steps.meta.outputs.tags }}
+          labels: prod-${{ steps.meta.outputs.labels }}
