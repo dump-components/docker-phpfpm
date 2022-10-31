@@ -44,8 +44,11 @@ jobs:
         with:
           context: ./Dockerfiles/base/
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: base-${{ steps.meta.outputs.labels }}
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-${{ steps.vars.outputs.tag }}
+            ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-latest
+          labels: ${{ steps.meta.outputs.labels }}
+          # tags: ${{ steps.meta.outputs.tags }}
 
       # - name: Build and push Docker image | DEV
       #   uses: docker/build-push-action@v3
