@@ -45,7 +45,7 @@ jobs:
           context: ./Dockerfiles/base/
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-${{ steps.vars.outputs.tag }}
+            ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-${{ steps.meta.outputs.tags }}
             ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-latest
           labels: ${{ steps.meta.outputs.labels }}
           # tags: ${{ steps.meta.outputs.tags }}
