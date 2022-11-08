@@ -31,6 +31,7 @@ jobs:
         run: |
           echo ${RELEASE_VERSION}
           echo ${PHP_VERSION}
+          echo ${{ env }}
       
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -46,11 +47,8 @@ jobs:
       
       - name: Build and push Docker image | BASE
         uses: docker/build-push-action@v3
-        env:
-          TAG: ${{ steps.meta.outputs.tags }}
-          PHP_VERSION: ${PHP_VERSION}
         with:
-          context: ./Dockerfiles/$PHP_VERSION/base/
+          context: ./Dockerfiles/${{ env.PHP_VERSION }}/base/
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-${{ env.PHP_VERSION }}/${{ env.RELEASE_VERSION }}
