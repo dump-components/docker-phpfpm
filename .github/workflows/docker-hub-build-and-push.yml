@@ -51,7 +51,7 @@ jobs:
           context: ./Dockerfiles/${{ env.PHP_VERSION }}/base/
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-${{ env.PHP_VERSION }}/${{ env.RELEASE_VERSION }}
+            ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-${{ env.PHP_VERSION }}-${{ env.RELEASE_VERSION }}
             ${{ secrets.DOCKER_USERNAME }}/php-fpm:base-latest
           labels: ${{ steps.meta.outputs.labels }}
 
