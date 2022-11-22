@@ -13,13 +13,13 @@ user: "dump"
 
 ```shell
 ## base
-docker build -t dumptec/php-fpm:8.1-base -f Dockerfiles/base/Dockerfile ./Dockerfiles/base/
+docker build -t dumptec/php-fpm:base-8.1-latest -f Dockerfiles/8.1/base/Dockerfile ./Dockerfiles/8.1/base/
 
 ## development
-docker build -t dumptec/php-fpm:8.1-dev  -f Dockerfiles/dev/Dockerfile ./Dockerfiles/dev/
+docker build -t dumptec/php-fpm:dev-8.1-latest -f Dockerfiles/8.1/dev/Dockerfile ./Dockerfiles/8.1/dev/
 
 ## production
-docker build -t dumptec/php-fpm:8.1  -f Dockerfiles/prod/Dockerfile ./Dockerfiles/prod/
+docker build -t dumptec/php-fpm:prod-8.1-latest  -f Dockerfiles/8.1/prod/Dockerfile ./Dockerfiles/8.1/prod/
 ```
 
 ## Arquivos de configuração

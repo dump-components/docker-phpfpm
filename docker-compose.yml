@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
     phpfpm:
-        image: dumptec/php-fpm:8.1-dev
+        image: dumptec/php-fpm:dev-8.1-latest
         container_name: phpfpm
         working_dir: /app
         extra_hosts:
