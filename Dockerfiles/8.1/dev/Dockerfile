@@ -19,6 +19,8 @@ mkdir /var/run/sshd && \
 echo "dump:$(mkpasswd -s </dev/null)" | chpasswd -e && \
 sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config  && \
 ## Composer install 
-wget https://getcomposer.org/download/2.4.3/composer.phar && chmod +x ./composer.phar && mv composer.phar /usr/local/bin/composer 
+wget https://getcomposer.org/download/2.4.3/composer.phar && chmod +x ./composer.phar && mv composer.phar /usr/local/bin/composer
+
+RUN ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
 
 WORKDIR /app
