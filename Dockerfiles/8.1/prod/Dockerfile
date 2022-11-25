@@ -1,4 +1,4 @@
-FROM dumptec/php-fpm:8.1-base
+FROM dumptec/php-fpm:base-8.1-latest
 
 ## Install extension dependencies
 RUN apt-get update -y && apt-get install -y libcurl4 libcurl4-openssl-dev libssl1.1 libxml2 libpq-dev \ 

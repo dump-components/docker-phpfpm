@@ -1,4 +1,4 @@
-FROM dumptec/php-fpm:8.1-base
+FROM dumptec/php-fpm:base-8.1-latest
 
 COPY ./data/php-fpm.conf/php-fpm-8.1.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.conf
 
