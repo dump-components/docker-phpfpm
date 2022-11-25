@@ -1,9 +1,12 @@
 FROM dumptec/php-fpm:8.1-base
 
+COPY ./data/php-fpm.conf/php-fpm-8.1.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.conf
+
 ### Add xdebug config
 COPY ./data/php-ini.d/php-8.1-xdebug.ini /usr/local/etc/php/conf.d/default-php-8.1-xdebug.ini
+COPY --chown=root:root ./data/entrypoint.sh /entrypoint.sh
 
-# ## Install extension dependencies
+## ## Install extension dependencies
 RUN apt-get update -y && apt-get install -y procps whois wget libpng-dev openssh-server libpq-dev zlib1g-dev \
 libcurl4 libcurl4-openssl-dev libssl1.1 libxml2 libpq-dev  \ 
 libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev  expect && \
@@ -19,8 +22,14 @@ mkdir /var/run/sshd && \
 echo "dump:$(mkpasswd -s </dev/null)" | chpasswd -e && \
 sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config  && \
 ## Composer install 
-wget https://getcomposer.org/download/2.4.3/composer.phar && chmod +x ./composer.phar && mv composer.phar /usr/local/bin/composer
+wget https://getcomposer.org/download/2.4.3/composer.phar && chmod +x ./composer.phar && mv composer.phar /usr/local/bin/composer && \
+## Generate ssh-keygen
+yes | ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 && \ 
+mkdir /home/dump/.ssh && yes | ssh-keygen -t ed25519 -f /home/dump/.ssh/id_ed25519 && \ 
+chown dump:dump -R /home/dump/.ssh && chmod +x /entrypoint.sh
 
-RUN ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
+EXPOSE 22
 
 WORKDIR /app
+
+CMD ["/bin/sh","-c","/entrypoint.sh"]

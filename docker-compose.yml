@@ -8,8 +8,9 @@ services:
         working_dir: /app
         extra_hosts:
             - "host.docker.internal:host-gateway"
-        user: "dump"
         restart: on-failure
+        ports:
+            - "22:22"
         logging:
             options:
                 max-size: "50m"
