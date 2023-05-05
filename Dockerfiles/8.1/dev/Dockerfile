@@ -29,7 +29,7 @@ yes | ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 && \
 mkdir /home/dump/.ssh && yes | ssh-keygen -t ed25519 -f /home/dump/.ssh/id_ed25519 && \ 
 chown dump:dump -R /home/dump/.ssh && chmod +x /entrypoint.sh
 
-EXPOSE 22
+RUN echo "root:root" | chpasswd
 
 WORKDIR /app
 
