@@ -1,7 +1,7 @@
 #! /bin/sh
 
 echo "Start sshd"
-/usr/sbin/sshd -D &
+echo root | su root /etc/init.d/ssh start
 
 echo "Start php-fpm"
 /usr/local/sbin/php-fpm

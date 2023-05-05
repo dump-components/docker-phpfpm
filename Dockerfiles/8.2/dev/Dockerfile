@@ -20,6 +20,7 @@ pecl install -o -f redis xdebug && rm -rf /tmp/pear && \
 docker-php-ext-enable xdebug sockets redis > /dev/null 2>&1 && \
 ## Ssh config to use in development
 mkdir /var/run/sshd && \
+echo "root:root" | chpasswd -e && \
 echo "dump:$(mkpasswd -s </dev/null)" | chpasswd -e && \
 sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config  && \
 ## Composer install 
@@ -28,8 +29,6 @@ wget https://getcomposer.org/download/2.4.3/composer.phar && chmod +x ./composer
 yes | ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 && \ 
 mkdir /home/dump/.ssh && yes | ssh-keygen -t ed25519 -f /home/dump/.ssh/id_ed25519 && \ 
 chown dump:dump -R /home/dump/.ssh && chmod +x /entrypoint.sh
-
-EXPOSE 22
 
 WORKDIR /app
 
