@@ -1,5 +1,7 @@
 FROM dumptec/php-fpm:base-8.2-latest
 
+ENV PHP_IDE_CONFIG="serverName=localhost"
+
 COPY ./data/php-fpm.conf/php-fpm-8.1.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.conf
 
 ### Add xdebug config
