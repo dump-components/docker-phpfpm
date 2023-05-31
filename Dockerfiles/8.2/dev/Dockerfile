@@ -1,9 +1,9 @@
 FROM dumptec/php-fpm:base-8.2-latest
 
-COPY ./data/php-fpm.conf/php-fpm-8.1.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.conf
+COPY ./data/php-fpm.conf/php-fpm-8.2.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.conf
 
 ### Add xdebug config
-COPY ./data/php-ini.d/php-8.1-xdebug.ini /usr/local/etc/php/conf.d/default-php-8.1-xdebug.ini
+COPY ./data/php-ini.d/php-8.2-xdebug.ini /usr/local/etc/php/conf.d/default-php-8.2-xdebug.ini
 COPY --chown=root:root ./data/entrypoint.sh /entrypoint.sh
 
 ## ## Install extension dependencies
