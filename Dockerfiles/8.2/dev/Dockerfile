@@ -12,7 +12,7 @@ libcurl4 libcurl4-openssl-dev libssl1.1 libxml2 libpq-dev  \
 libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev  expect && \
 ## Install required dependencies
 docker-php-ext-configure pcntl --enable-pcntl && \
-docker-php-ext-install sockets bcmath pgsql pdo_pgsql simplexml zip gd sodium pcntl && \
+docker-php-ext-install sockets bcmath pgsql pdo_pgsql simplexml zip gd sodium pcntl opcache && \
 docker-php-ext-enable gd sodium bcmath pgsql pdo_pgsql simplexml zip pcntl && \
 ## local dependencies
 apt-get install -y npm && \
