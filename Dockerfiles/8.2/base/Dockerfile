@@ -10,3 +10,21 @@ RUN useradd -u 1000 -ms /bin/bash dump && \
 ### Copy PHP config files
 COPY ./data/php-ini.d/php-8.1.ini /usr/local/etc/php/conf.d/xx-default-php-custom.ini
 COPY ./data/php-fpm.conf/php-fpm-8.1.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.conf
+
+## Enable legacy openssl algorithms
+RUN <<EOF cat >> /etc/ssl/openssl.cnf
+openssl_conf = openssl_init
+
+[openssl_init]
+providers = provider_sect
+
+[provider_sect]
+default = default_sect
+legacy = legacy_sect
+
+[default_sect]
+activate = 1
+
+[legacy_sect]
+activate = 1
+EOF
