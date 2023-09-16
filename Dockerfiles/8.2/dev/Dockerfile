@@ -1,5 +1,7 @@
 FROM dumptec/php-fpm:base-8.2-latest
 
+ENV PHP_IDE_CONFIG="serverName=localhost"
+
 COPY --chown=root:root ./data/entrypoint.sh /entrypoint.sh
 
 ## ## Install extension dependencies
