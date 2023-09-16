@@ -29,6 +29,7 @@ RUN echo "root:root" | chpasswd
 
 ### Copy PHP config files
 COPY ./data/php-ini.d/php.ini /usr/local/etc/php/conf.d/xx-default-php-custom.ini
+COPY ./data/php-ini.d/php-xdebug.ini /usr/local/etc/php/conf.d/zzz-xdebug.ini
 COPY ./data/php-ini.d/opcache.ini /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 COPY ./data/php-fpm.conf/php-fpm.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.ini
 
