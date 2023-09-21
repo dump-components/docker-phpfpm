@@ -37,4 +37,6 @@ COPY ./data/php-fpm.conf/php-fpm.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm
 
 WORKDIR /app
 
+USER dump
+
 CMD ["/bin/sh","-c","/entrypoint.sh"]

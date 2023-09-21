@@ -17,3 +17,5 @@ COPY ./data/php-ini.d/opcache.ini /usr/local/etc/php/conf.d/docker-php-ext-opcac
 COPY ./data/php-fpm.conf/php-fpm.conf /usr/local/etc/php-fpm.d/xx-default-phpfpm-custom.conf
 
 WORKDIR /app
+
+USER dump
