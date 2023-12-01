@@ -1,4 +1,4 @@
-FROM php:8.3-rc-fpm-bookworm
+FROM php:8.3
 
 ## Create dump user
 RUN useradd -u 1000 -ms /bin/bash dump && \
