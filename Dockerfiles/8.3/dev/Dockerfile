@@ -12,8 +12,8 @@ docker-php-ext-install sockets bcmath pgsql pdo_pgsql simplexml zip gd sodium pc
 docker-php-ext-enable gd sodium bcmath pgsql pdo_pgsql simplexml zip pcntl && \
 ## local dependencies
 apt-get install -y npm && \
-pecl install -o -f redis && rm -rf /tmp/pear && \
-docker-php-ext-enable sockets redis > /dev/null 2>&1 && \
+pecl install -o -f redis xdebug && rm -rf /tmp/pear && \
+docker-php-ext-enable sockets redis xdebug > /dev/null 2>&1 && \
 ## Ssh config to use in development
 mkdir /var/run/sshd && \
 echo "dump:$(mkpasswd -s </dev/null)" | chpasswd -e && \
