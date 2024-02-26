@@ -2,7 +2,7 @@ FROM dumptec/php-fpm:base-8.3-latest
 
 ## Install extension dependencies
 RUN apt-get update -y && apt-get install -y libcurl4 libcurl4-openssl-dev libssl3 libxml2 libpq-dev \
-    libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev libpng-dev zlib1g-dev && \
+    libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev libpng-dev zlib1g-dev p7zip-full && \
 ## Install required dependencies
     docker-php-ext-configure pcntl --enable-pcntl && \
     docker-php-ext-install sockets bcmath pgsql pdo_pgsql simplexml zip gd sodium pcntl opcache && \
