@@ -5,7 +5,7 @@ COPY --chown=root:root ./data/entrypoint.sh /entrypoint.sh
 ## ## Install extension dependencies
 RUN apt-get update -y && apt-get install -y procps whois wget libpng-dev openssh-server libpq-dev zlib1g-dev \
 libcurl4 libcurl4-openssl-dev libssl3 libxml2 libpq-dev  \
-libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev  expect && \
+libxml2-dev libssl-dev libzip-dev zlib1g libsodium-dev expect p7zip-full && \
 ## Install required dependencies
 docker-php-ext-configure pcntl --enable-pcntl && \
 docker-php-ext-install sockets bcmath pgsql pdo_pgsql simplexml zip gd sodium pcntl opcache && \
